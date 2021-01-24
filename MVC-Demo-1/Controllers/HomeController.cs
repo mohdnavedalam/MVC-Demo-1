@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using MVC_Demo_1.Models;
 
 namespace MVC_Demo_1.Controllers
 {
     public class HomeController : Controller
     {
+        Database1Entities db = new Database1Entities();
+
         public ActionResult Index()
         {
-            return View();
+            var allDepartments = db.Departments;
+            return View(allDepartments);
         }
 
         public ActionResult About()
