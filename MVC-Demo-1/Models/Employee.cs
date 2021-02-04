@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 namespace MVC_Demo_1.Models
 {
     using System;
@@ -14,10 +17,21 @@ namespace MVC_Demo_1.Models
     
     public partial class Employee
     {
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
+
+        [Required, Display(Name = "Employee Name")]
         public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
         public System.DateTime HireDate { get; set; }
+
+        [Required, Display(Name = "Email Address")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Please provide valid email address")]
         public string Email { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
         public int DepartmentID { get; set; }
     
         public virtual Department Department { get; set; }
